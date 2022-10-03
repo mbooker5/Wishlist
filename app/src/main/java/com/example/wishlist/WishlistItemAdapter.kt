@@ -8,12 +8,10 @@ class WishlistItemAdapter (private val items: List<WishlistItem>) : RecyclerView
 
         val nameTextView: android.widget.TextView
         val priceTextView: android.widget.TextView
-        val urlTextView: android.widget.TextView
 
         init {
             nameTextView = itemView.findViewById(R.id.itemName)
             priceTextView = itemView.findViewById(R.id.itemPrice)
-            urlTextView = itemView.findViewById(R.id.itemUrl)
         }
     }
 
@@ -28,7 +26,6 @@ class WishlistItemAdapter (private val items: List<WishlistItem>) : RecyclerView
         val items = items.get(position)
         holder.nameTextView.text = items.itemName
         holder.priceTextView.text = items.itemPrice.toString()
-        holder.urlTextView.text = items.itemUrl
     }
 
     override fun getItemCount(): Int {

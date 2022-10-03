@@ -15,19 +15,17 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<android.widget.Button>(R.id.addItemButton)
         val editItemName = findViewById<android.widget.EditText>(R.id.editTextItemName)
-        val editItemUrl = findViewById<android.widget.EditText>(R.id.editTextItemUrl)
         val editItemPrice = findViewById<android.widget.EditText>(R.id.editTextItemPrice)
 
-        fun addItem(itemName: String, itemPrice: Float, itemUrl : String) : Unit {
+        fun addItem(itemName: String, itemPrice: Float) : Unit {
             WishlistItemFetcher.itemNames.add(itemName)
             WishlistItemFetcher.itemPrices.add(itemPrice)
-            WishlistItemFetcher.itemUrls.add(itemUrl)
         }
 
         button.setOnClickListener {
             val wishlistRv = findViewById<RecyclerView>(R.id.wishlistRv)
             val itemPriceFloat = editItemPrice.text.toString().toFloat();
-            addItem(editItemName.text.toString(), itemPriceFloat, editItemUrl.text.toString())
+            addItem(editItemName.text.toString(), itemPriceFloat)
             wishlistItems = WishlistItemFetcher.getWishListItems()
             val adapter = WishlistItemAdapter(wishlistItems)
             wishlistRv.adapter = adapter
